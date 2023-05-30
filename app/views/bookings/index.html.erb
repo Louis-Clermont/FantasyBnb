@@ -1,3 +1,6 @@
+<%= link_to 'Home page', root_path %>
+
+
 <h1>All Bookings</h1>
 
 <table>
@@ -9,21 +12,17 @@
       <th>Total Price</th>
       <th>Start Date</th>
       <th>End Date</th>
-      <th>Created At</th>
-      <th>Updated At</th>
     </tr>
   </thead>
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.id %></td>
+        <td><%= link_to booking.id, booking_path(booking) %></td>
         <td><%= booking.user.email %></td>
         <td><%= booking.destination.address %></td>
         <td><%= booking.total_price %></td>
         <td><%= booking.start_date %></td>
         <td><%= booking.end_date %></td>
-        <td><%= booking.created_at %></td>
-        <td><%= booking.updated_at %></td>
       </tr>
     <% end %>
   </tbody>
