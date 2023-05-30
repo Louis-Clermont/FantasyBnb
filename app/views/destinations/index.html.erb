@@ -1,0 +1,30 @@
+<h1>All Destinations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Address</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @destinations.each do |destination| %>
+      <tr>
+        <td><%= destination.id %></td>
+        <td><%= destination.user.email %></td>
+        <td><%= destination.address %></td>
+        <td><%= destination.price %></td>
+        <td><%= destination.description %></td>
+        <td><%= destination.created_at %></td>
+        <td><%= destination.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Destination', new_destination_path %>
