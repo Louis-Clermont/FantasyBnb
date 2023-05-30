@@ -1,0 +1,27 @@
+<h1>New Destination</h1>
+
+<%= form_with(model: @destination, url: destinations_path, local: true) do |form| %>
+  <div>
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.all.collect { |user| [user.email, user.id] } %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create Destination' %>
+  </div>
+<% end %>
