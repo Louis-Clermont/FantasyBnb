@@ -4,7 +4,7 @@
 <p><strong>Address:</strong> <%= @destination.address %></p>
 <p><strong>Price:</strong> <%= @destination.price %></p>
 
-<%= form_with(model: @booking, url: bookings_path, local: true) do |form| %>
+<%= form_with(model: [@destination, @booking]) do |form| %>
 
   <div>
     <%= form.label :start_date %>
@@ -22,4 +22,4 @@
 <% end %>
 
 
- <%= link_to "Back", bookings_path %>
+ <%= link_to "Back", destinations_path %>
