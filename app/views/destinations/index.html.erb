@@ -1,12 +1,10 @@
-<br>
-<br>
 <div class="container">
+<h1><strong>All Destinations</strong></h1>
   <div class="cards">
     <% @destinations.each_with_index do |destination, i| %>
       <%= link_to destination_path(destination) do %>
         <div class="card-category card<%= i %>">
           <%= destination.address %>
-          <%= destination.price %>
         </div>
       <% end %>
     <% end %>
