@@ -1,28 +1,16 @@
 <%= link_to 'Home page', root_path %>
 
 <h1>All Destinations</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>User</th>
-      <th>Address</th>
-      <th>Price</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container">
+  <div class="cards">
     <% @destinations.each do |destination| %>
-      <tr>
-        <td><%= link_to destination.id, destination_path(destination) %></td>
-        <td><%= destination.user.email %></td>
-        <td><%= destination.address %></td>
-        <td><%= destination.price %></td>
-        <td><%= destination.description %></td>
-      </tr>
+      <%= link_to destination_path(destination) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%= destination.address %>
+          <%= destination.price %>
+        </div>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New Destination', new_destination_path %>
+  </div>
+  <%= link_to 'New Destination', new_destination_path %>
+</div>
