@@ -1,24 +1,29 @@
-<h1>Booking Details</h1>
+<div class="container">
 
-<p><strong>ID:</strong> <%= @booking.id %></p>
-<p><strong>User:</strong> <%= @booking.user.email %></p>
-<p><strong>Destination:</strong> <%= @booking.destination.address %></p>
-<p><strong>Total Price:</strong> <%= @booking.total_price %></p>
-<p><strong>Start Date:</strong> <%= @booking.start_date %></p>
-<p><strong>End Date:</strong> <%= @booking.end_date %></p>
+  <h1 class="booking-title" >Booking Details</h1>
 
+  <p><strong>ID:</strong> <%= @booking.id %></p>
+  <p><strong>User:</strong> <%= @booking.user.email %></p>
+  <p><strong>Destination:</strong> <%= @booking.destination.address %></p>
+  <p><strong>Price per night:</strong> <%= @booking.total_price %></p>
+  <p><strong>Start Date:</strong> <%= @booking.start_date %></p>
+  <p><strong>End Date:</strong> <%= @booking.end_date %></p>
 
- <h2>Reviews</h2>
+  <h2>Reviews</h2>
+  <div class="ratings">
     <% @reviews.each do |review| %>
-      <h3><%= review.rating %></h3>
-      <p><%= review.comment %></p>
+      <div class="card">
+        <div class="rating">
+          <% review.rating.times do %>
+            <span class="star">&#9733;</span>
+          <% end %>
+        </div>
+        <p><%= review.comment %></p>
+      </div>
     <% end %>
+  </div>
 
+  <%= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking), class: "btn btn-primary" %>
 
-
-  <%= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking) , class: "btn btn-primary" %>
-
-
-
-
-<%= link_to "Back", bookings_path %>
+  <%= link_to "Back", bookings_path %>
+</div>

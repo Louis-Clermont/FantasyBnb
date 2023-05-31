@@ -2,7 +2,7 @@
 
 <p><strong>User:</strong> <%= @destination.user.email %></p>
 <p><strong>Address:</strong> <%= @destination.address %></p>
-<p><strong>Price:</strong> <%= @destination.price %></p>
+<p><strong>Price per night:</strong> <%= @destination.price %></p>
 
 <%= form_with(model: [@destination, @booking]) do |form| %>
 
