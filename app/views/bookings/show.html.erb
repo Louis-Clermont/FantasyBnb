@@ -14,7 +14,11 @@
       <p><%= review.comment %></p>
     <% end %>
 
-    <%= link_to "Add a review", new_booking_review_path(@booking) %>
 
 
- <%= link_to "Back", bookings_path %>
+  <%= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking) , class: "btn btn-primary" %>
+
+
+
+
+<%= link_to "Back", bookings_path %>

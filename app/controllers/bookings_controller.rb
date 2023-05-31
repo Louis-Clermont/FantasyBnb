@@ -5,10 +5,13 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @destination = Destination.find(params[:destination_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @destination = Destination.find(params[:destination_id])
+    @booking.destination = @destination
     if @booking.save
       redirect_to @booking, notice: 'Booking was successfully created.'
     else
@@ -17,6 +20,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+    # @destination = Destination.find(params[:destination_id])
     @booking = Booking.find(params[:id])
     @reviews = @booking.reviews
   end

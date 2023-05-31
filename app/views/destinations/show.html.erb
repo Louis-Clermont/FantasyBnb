@@ -7,5 +7,7 @@
 <p><strong>Description:</strong> <%= @destination.description %></p>
 
 
+<%= link_to "Book", new_destination_booking_path(@destination) , class: "btn btn-primary" %>
+
 
  <%= link_to "Back", destinations_path %>
