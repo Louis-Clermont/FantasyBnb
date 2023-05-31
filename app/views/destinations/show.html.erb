@@ -1,13 +1,17 @@
-<h1>Destination Details</h1>
+<div class="container">
+  <h1 class="destination-title">Destination Details</h1>
 
-<p><strong>ID:</strong> <%= @destination.id %></p>
-<p><strong>User:</strong> <%= @destination.user.email %></p>
-<p><strong>Address:</strong> <%= @destination.address %></p>
-<p><strong>Price:</strong> <%= @destination.price %></p>
-<p><strong>Description:</strong> <%= @destination.description %></p>
+  <!-- Add image element for destination picture -->
 
 
-<%= link_to "Book", new_destination_booking_path(@destination) , class: "btn btn-primary" %>
+   <%= image_tag "hobbiton.jpg", class:"destination-image" %>
+  <div class="destination-info">
+    <p><strong>ID:</strong> <%= @destination.id %></p>
+    <p><strong>User:</strong> <%= @destination.user.email %></p>
+    <p><strong>Address:</strong> <%= @destination.address %></p>
+    <p><strong>Price per night :</strong> <%= @destination.price %></p>
+    <p><strong>Description:</strong> <%= @destination.description %></p>
+  </div>
 
-
- <%= link_to "Back", destinations_path %>
+  <%= link_to "Book", new_destination_booking_path(@destination), class: "btn btn-primary" %>
+</div>
