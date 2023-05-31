@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root to: "destinations#index"
   get "/about", to: "pages#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :bookings, only: [:index, :new, :create, :show]
-  resources :destinations, only: [:index, :new, :create, :show]
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :bookings, only: [:index, :new, :create, :show]
-  resources :destinations, only: [:index, :new, :create, :show]
+  resources :destinations, only: [:index, :new, :create, :show] do
+    resources :bookings, only: [:new, :create] do
+      resources :reviews, only: [:new, :create]
+    end
+  end
+  resources :bookings, except: [:new, :create]
 end
