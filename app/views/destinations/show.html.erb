@@ -1,13 +1,75 @@
-<div class="container">
+<%# <div class="container">
   <h1 class="destination-title">Destination Details</h1>
-   <%= image_tag "hobbiton.jpg", class:"destination-image" %>
+  <img src="hobbiton.jpg" alt="Hobbiton" class="destination-image">
   <div class="destination-info">
-    <p><strong>ID:</strong> <%= @destination.id %></p>
-    <p><strong>User:</strong> <%= @destination.user.email %></p>
-    <p><strong>Address:</strong> <%= @destination.address %></p>
-    <p><strong>Price per night :</strong> <%= @destination.price %></p>
-    <p><strong>Description:</strong> <%= @destination.description %></p>
+    <p><strong>ID:</strong> 123</p>
+    <p><strong>User:</strong> user@example.com</p>
+    <p><strong>Address:</strong> 123 Main St</p>
+    <p><strong>Price per night:</strong> $100</p>
+    <p><strong>Description:</strong> Lorem ipsum dolor sit amet.</p>
   </div>
 
   <%= link_to "Book", new_destination_booking_path(@destination), class: "btn btn-primary" %>
+
+<div class="map">
+  <%= image_tag "hobbiton.jpg" %>
 </div>
+
+<div class="container margin-top-negative">
+  <div class="row">
+    <div class="col-8">
+      <div class="destination-show-card">
+        <h1 class="destination-show-address"><%= @destination.address %></h1>
+      </div>
+     <div class="destination-show-card">
+        <div class="profile_picture">
+        <%= image_tag "dumbledore.jpg" %>
+        </div>
+        <h4 class="host-name">user@example.com</h4>
+      </div>
+      <div class="destination-show-card">
+        <h5>A bit more about this destination...</h5>
+        <p><%= @destination.description %></p>
+      </div>
+      <div class="destination-show-card">
+        <h5>Location</h5>
+        <div class="map">
+        <div class="map" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=<%= @destination.address %>&zoom=13&scale=2&size=1000x1000&maptype=roadmap&markers=color:red%7C<%= @destination.address %>&key=AIzaSyAPpx0wk4d-AQ8bhe8-a-ihC7NXLoPElhg')"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div>
+          <%= form_with(model: [@destination, @booking]) do |form| %>
+          <div class= "price" >
+            <%= @destination.price %>€
+          </div>
+          <br>
+          <br>
+            <h5>Book this place!</h5>
+            <div>
+              <%= form.label :start_date %>
+              <%= form.date_field :start_date %>
+            </div>
+
+            <div>
+              <%= form.label :end_date %>
+              <%= form.date_field :end_date %>
+            </div>
+
+            <div>
+              <%= form.submit 'Create Booking' %>
+            </div>
+          <% end %>
+      </div>
+      <br>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
