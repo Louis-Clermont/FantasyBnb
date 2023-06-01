@@ -1,12 +1,24 @@
 <div class="container">
-<h1><strong>All Destinations</strong></h1>
   <div class="cards">
-    <% @destinations.each_with_index do |destination, i| %>
-      <%= link_to destination_path(destination) do %>
-        <div class="card-category card<%= i %>">
-          <%= destination.address %>
-        </div>
+      <% @destinations.each_with_index do |destination, i| %>
+        <%= link_to destination_path(destination), class:"text-decoration-none" do %>
+          <div class="card-trip">
+            <% if destination.photos.first.nil? %>
+              <%= image_tag "hogwarts-castle.jpg" %>
+            <% else %>
+              <%= cl_image_tag destination.photos.first.key %>
+            <% end %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= destination.title %></h2>
+                <p><%= destination.description %></p>
+              </div>
+              <h2 class="card-trip-pricing">
+              <%= destination.price %></h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
   </div>
 </div>

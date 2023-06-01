@@ -10,6 +10,7 @@ class DestinationsController < ApplicationController
 
   def create
     @destination = Destination.new(destination_params)
+    @destination.user = current_user
     if @destination.save
       redirect_to @destination, notice: 'Destination was successfully created.'
     else
@@ -24,6 +25,6 @@ class DestinationsController < ApplicationController
   private
 
   def destination_params
-    params.require(:destination).permit(:user_id, :address, :price, :description)
+    params.require(:destination).permit(:title, :address, :price, :description, photos: [])
   end
 end

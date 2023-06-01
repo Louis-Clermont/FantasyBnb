@@ -1,13 +1,24 @@
 <div class="container">
   <h1 class="destination-title">Destination Details</h1>
-   <%= image_tag "hobbiton.jpg", class:"destination-image" %>
+
+    <% @destination.photos.each_with_index do |photo, i| %>
+      <%= cl_image_tag photo.key %>
+    <% end %>
+
   <div class="destination-info">
-    <p><strong>ID:</strong> <%= @destination.id %></p>
-    <p><strong>User:</strong> <%= @destination.user.email %></p>
+    <p><strong>Host:</strong> <%= @destination.user.first_name %></p>
     <p><strong>Address:</strong> <%= @destination.address %></p>
-    <p><strong>Price per night :</strong> <%= @destination.price %></p>
+    <p><strong>Price per night:</strong> <%= @destination.price %></p>
     <p><strong>Description:</strong> <%= @destination.description %></p>
   </div>
 
   <%= link_to "Book", new_destination_booking_path(@destination), class: "btn btn-primary" %>
+
+<div class="reviews">
+  <% @destination.reviews.each_with_index do |review, i| %>
+        <%= review.rating %>
+        <%= review.comment %>
+      <% end %>
+</div>
+
 </div>
