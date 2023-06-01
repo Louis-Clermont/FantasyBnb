@@ -23,6 +23,24 @@ class DestinationsController < ApplicationController
     @destination = Destination.find(params[:id])
   end
 
+  def edit
+    @destination = Destination.find(params[:id])
+  end
+
+  def update
+    if @destination.update(destination_params)
+      redirect_to destination_path(@destination)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @destination = Destination.find(params[:id])
+    @destination.destroy
+    redirect_to dashboard_path, status: :see_other
+  end
+
   private
 
   def destination_params

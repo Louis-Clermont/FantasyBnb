@@ -1,38 +1,46 @@
-
-    <% @destination.photos.each_with_index do |photo, i| %>
-      <%= cl_image_tag photo.key %>
-    <% end %>
-
-
-<div class="reviews">
-  <% @destination.reviews.each_with_index do |review, i| %>
-        <%= review.rating %>
-        <%= review.comment %>
-      <% end %>
-</div>
-
 <div class="map">
-  <%= image_tag "hobbiton.jpg" %>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+  <% @destination.photos.each_with_index do |photo, i| %>
+    <div class="carousel-item <%= "active" if i == 0 %>">
+      <%= cl_image_tag photo.key, class: "carousel-image" %>
+    </div>
+  <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 
-<div class="container margin-top-negative">
+<div class="container mt-4">
   <div class="row">
     <div class="col-8">
       <div class="destination-show-card">
-        <h1 class="destination-show-address"><%= @destination.address %></h1>
+        <h1 class="destination-show-address"><%= @destination.title %></h1>
       </div>
      <div class="destination-show-card">
-        <div class="profile_picture">
+        <div class="profile_picture d-flex align-items-center">
         <%= image_tag "dumbledore.jpg" %>
+        <h5 class="host-name  ps-3">user@example.com</h5>
         </div>
-        <h4 class="host-name">user@example.com</h4>
       </div>
       <div class="destination-show-card">
         <h5>A bit more about this destination...</h5>
         <p><%= @destination.description %></p>
       </div>
       <div class="destination-show-card">
-     
+      <h5>Location</h5>
+      <p> <%= @destination.address %></p>
         <div class="map">
         <div class="map" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=<%= @destination.address %>&zoom=13&scale=2&size=1000x1000&maptype=roadmap&markers=color:red%7C<%= @destination.address %>&key=AIzaSyAPpx0wk4d-AQ8bhe8-a-ihC7NXLoPElhg')"></div>
         </div>
@@ -62,11 +70,19 @@
               <%= form.submit 'Create Booking' %>
             </div>
           <% end %>
-      </div>
-      <br>
+        </div>
+        <br>
+        <div class="destination-show-card">
+        <h5>Reviews</h5>
+          <% @destination.reviews.each_with_index do |review, i| %>
+          <div class="rating">
+          <% review.rating.times do %>
+            <span class="star">&#9733;</span>
+          <% end %>
+          <%= review.comment %>
+            <% end %>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </div>
