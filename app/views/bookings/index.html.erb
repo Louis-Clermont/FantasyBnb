@@ -6,8 +6,7 @@
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>User</th>
+      <th>Host</th>
       <th>Destination</th>
       <th>Total Price</th>
       <th>Start Date</th>
@@ -17,9 +16,9 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= link_to booking.id, booking_path(booking) %></td>
-        <td><%= booking.user.email %></td>
-        <td><%= booking.destination.address %></td>
+        <%# <td><%= link_to booking.id, booking_path(booking) %>
+        <td><%= booking.user.first_name %></td>
+        <td><%= booking.destination.title %></td>
         <td><%= booking.total_price %></td>
         <td><%= booking.start_date %></td>
         <td><%= booking.end_date %></td>

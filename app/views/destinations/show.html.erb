@@ -1,15 +1,15 @@
-<%# <div class="container">
-  <h1 class="destination-title">Destination Details</h1>
-  <img src="hobbiton.jpg" alt="Hobbiton" class="destination-image">
-  <div class="destination-info">
-    <p><strong>ID:</strong> 123</p>
-    <p><strong>User:</strong> user@example.com</p>
-    <p><strong>Address:</strong> 123 Main St</p>
-    <p><strong>Price per night:</strong> $100</p>
-    <p><strong>Description:</strong> Lorem ipsum dolor sit amet.</p>
-  </div>
 
-  <%= link_to "Book", new_destination_booking_path(@destination), class: "btn btn-primary" %>
+    <% @destination.photos.each_with_index do |photo, i| %>
+      <%= cl_image_tag photo.key %>
+    <% end %>
+
+
+<div class="reviews">
+  <% @destination.reviews.each_with_index do |review, i| %>
+        <%= review.rating %>
+        <%= review.comment %>
+      <% end %>
+</div>
 
 <div class="map">
   <%= image_tag "hobbiton.jpg" %>

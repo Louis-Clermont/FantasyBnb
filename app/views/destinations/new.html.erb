@@ -5,8 +5,8 @@
   <h1>New Destination</h1>
 
   <div>
-    <%= form.label :user_id %>
-    <%= form.select :user_id, User.all.collect { |user| [user.email, user.id] } %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
 
   <div>
@@ -22,6 +22,10 @@
   <div>
     <%= form.label :description %>
     <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.file_field :photos, as: :file, input_html: { multiple: true } %>
   </div>
 
   <div>
