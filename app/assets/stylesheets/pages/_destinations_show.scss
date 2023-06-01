@@ -31,6 +31,13 @@
   height: 180px;
   background-position: center;
   background-size: cover;
+  img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover
+  }
 }
 
 .destination-card-content {
@@ -60,19 +67,16 @@
 }
 
 .map {
-  height: 350px;
+  height: 300px;
   background-position: center;
   background-size: cover;
-  img {
-    height: 100%;
+  .carousel-image {
+    height: 300px;
     width: 100%;
     object-fit: cover;
   }
 }
 
-.margin-top-negative {
-  margin-top: -75px;
-}
 .no-mb {
   margin-bottom: 0;
 }
