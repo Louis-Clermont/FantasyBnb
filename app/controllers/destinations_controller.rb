@@ -18,6 +18,7 @@ class DestinationsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @destination = Destination.find(params[:id])
   end
 
@@ -26,4 +27,5 @@ class DestinationsController < ApplicationController
   def destination_params
     params.require(:destination).permit(:user_id, :address, :price, :description)
   end
+
 end
