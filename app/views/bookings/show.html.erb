@@ -8,8 +8,8 @@
   <p><strong>Price per night:</strong> <%= @booking.destination.price %></p>
   <p><strong>Start Date:</strong> <%= @booking.start_date %></p>
   <p><strong>End Date:</strong> <%= @booking.end_date %></p>
-  <p><strong>Total Nights:</strong> <%= @booking.end_date - @booking.start_date %></p>
-  <p><strong>Total Price:</strong> <%= (@booking.end_date - @booking.start_date) * @booking.destination.price %></p>
+  <p><strong>Total Nights:</strong> <%= (@booking.end_date - @booking.start_date).to_i %></p>
+  <p><strong>Total Price:</strong> <%= (@booking.end_date - @booking.start_date).to_i * @booking.destination.price %></p>
 
 
   <h2>Reviews</h2>
@@ -22,6 +22,8 @@
           <% end %>
         </div>
         <p><%= review.comment %></p>
+        <p><%= review.booking.user.first_name %></p>
+        <p><%= cl_image_tag review.booking.user.photo.key, class:"avatar" %></p>
       </div>
     <% end %>
   </div>

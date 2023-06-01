@@ -43,13 +43,14 @@ a:hover {
 
 
 .card-trip {
+  height: 300px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-trip > img {
-  height: 100px;
+  height: 65%;
   width: 100%;
   object-fit: cover;
 }
@@ -71,8 +72,22 @@ a:hover {
   padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   position: relative;
+  height: 35%;
+
+}
+
+.card-trip-infos-description {
+  margin-right: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-trip-rating {
+  font-size: 0.92rem !important;
 }
 
 .card-trip-infos .card-trip-user {
