@@ -3,7 +3,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+
+  a {
+    color: black;
+  }
 }
+
+
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -54,3 +60,11 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+.fa-star {
+  margin-right: 4px;
+}
+
+// .navbar-toggler {
+
+// }

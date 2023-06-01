@@ -1,21 +1,23 @@
 <div class="container">
   <div class="cards">
       <% @destinations.each_with_index do |destination, i| %>
-        <%= link_to destination_path(destination), class:"text-decoration-none" do %>
+        <%= link_to destination_path(destination), class:"text-decoration-none mt-4" do %>
           <div class="card-trip">
             <% if destination.photos.first.nil? %>
-              <%= image_tag "hogwarts-castle.jpg" %>
+              <%= image_tag "hogwarts-castle.jpg", class: "card-image" %>
             <% else %>
-              <%= cl_image_tag destination.photos.first.key %>
+              <%= cl_image_tag destination.photos.first.key, class: "card-image" %>
             <% end %>
             <div class="card-trip-infos">
-              <div>
+              <div class="card-trip-infos-description">
                 <h2><%= destination.title %></h2>
-                <p><%= destination.description %></p>
+                <p><%= destination.address %></p>
+                <% if destination.reviews != [] %>
+                <p class="card-trip-rating"> <i class="fa-solid fa-star"></i><%= (destination.reviews.map(&:rating).sum)/destination.reviews.length %>
+                <% end %>
               </div>
               <h2 class="card-trip-pricing">
-              <%= destination.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              £<%= destination.price %></h2>
             </div>
           </div>
         <% end %>
