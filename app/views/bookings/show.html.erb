@@ -1,34 +1,64 @@
+<div class="map">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+    <% @booking.destination.photos.each_with_index do |photo, i| %>
+      <div class="carousel-item <%= "active" if i == 0 %>">
+        <%= cl_image_tag photo.key, class: "carousel-image" %>
+      </div>
+    <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
 <div class="container">
 
-  <h1 class="booking-title" >Booking Details</h1>
+  <h1 class="booking-title mt-4" >Booking Details</h1>
 
-  <p><strong>User:</strong> <%= @booking.user.email %></p>
-  <p><strong>Host:</strong> <%= @booking.destination.user.first_name %></p>
-  <p><strong>Destination:</strong> <%= @booking.destination.title %></p>
-  <p><strong>Price per night:</strong> <%= @booking.destination.price %></p>
-  <p><strong>Start Date:</strong> <%= @booking.start_date %></p>
-  <p><strong>End Date:</strong> <%= @booking.end_date %></p>
-  <p><strong>Total Nights:</strong> <%= (@booking.end_date - @booking.start_date).to_i %></p>
-  <p><strong>Total Price:</strong> <%= (@booking.end_date - @booking.start_date).to_i * @booking.destination.price %></p>
-
-
+<div class="attributes-container">
+  <div class="att-left" style="margin-right:50px">
+    <p><strong>User:</strong> <%= @booking.user.email %></p>
+    <p><strong>Host:</strong> <%= @booking.destination.user.first_name %></p>
+    <p><strong>Destination:</strong> <%= @booking.destination.title %></p>
+    <p><strong>Price per night:</strong> <%= @booking.destination.price %></p>
+  </div>
+  <div class="attr-right">
+    <p><strong>Start Date:</strong> <%= @booking.start_date %></p>
+    <p><strong>End Date:</strong> <%= @booking.end_date %></p>
+    <p><strong>Total Nights:</strong> <%= (@booking.end_date - @booking.start_date).to_i %></p>
+    <p><strong>Total Price:</strong> <%= (@booking.end_date - @booking.start_date).to_i * @booking.destination.price %></p>
+  </div>
+</div>
   <h2>Reviews</h2>
-  <div class="ratings">
+  <div class="ratings review-cards">
     <% @reviews.each do |review| %>
-      <div class="card">
+    <div class="card-product mb-3">
+      <%= cl_image_tag review.booking.user.photo.key, class:"avatar" %>
+      <div class="card-product-infos">
         <div class="rating">
           <% review.rating.times do %>
             <span class="star">&#9733;</span>
-            <h2><%= review.comment %></h2>
-            <p><%= review.booking.user.first_name %></p>
-            <p><%#= cl_image_tag review.booking.user.photo.key, class:"avatar" %></p>
           <% end %>
         </div>
+        <h2><%= review.comment %></h2>
+        <p><%= review.booking.user.first_name %></p>
       </div>
+    </div>
     <% end %>
   </div>
 
-  <%#= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking), class: "btn btn-primary" %>
+  <%= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking), class: "btn btn-primary" %>
 
-  <%= link_to "Back", bookings_path %>
+  <%= link_to "Back", bookings_path, class: "mt-4" %>
 </div>
