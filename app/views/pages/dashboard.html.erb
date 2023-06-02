@@ -1,44 +1,79 @@
-<div class= "container">
+<div class= "container mt-5 mb-5">
   <div class ="d-flex justify-content-between">
-    <h1> Your Destinations </h1>
-    <%= link_to "Add a Destination", new_destination_path%>
+    <h1><%= current_user.first_name %>'s Listings</h1>
   </div>
 <br>
   <div class="row">
-    <% current_user.destinations.each do |destination| %>
-      <div class="col-md-4">
-        <div class="destination-card">
-          <div class="destination-card-image">
-            <% if !destination.photos.attached? %>
-              <%= image_tag "hogwarts-castle.jpg" %>
-            <% else %>
-              <%= cl_image_tag destination.photos.first.key %>
-            <% end %>
-          </div>
-          <div class="destination-card-content">
-            <div class="destination-card-title">
-              <h4><%= destination.title %></h4>
+    <div class ="d-flex justify-content-between">
+      <% current_user.destinations.each do |destination| %>
+        <div class="col-md-4">
+          <div class="destination-card">
+            <div class="destination-card-image">
+              <% if !destination.photos.attached? %>
+                <%= image_tag "hogwarts-castle.jpg" %>
+              <% else %>
+                <%= cl_image_tag destination.photos.first.key %>
+              <% end %>
             </div>
-            <p><%= destination.address %></p>
-            <div class="flex">
-              <div class="flex align-items-center">
-                <i class="fa-solid fa-people-line"></i>
+            <div class="destination-card-content">
+              <div class="destination-card-title">
+                <h4><%= destination.title %></h4>
               </div>
-              <div class="flex align-items-center ms-3">
-                <i class="fa-solid fa-euro-sign"></i>
-                <span><%= destination.price %></span>
+              <p><%= destination.address %></p>
+              <div class="flex">
+                <div class="flex align-items-center">
+                  <i class="fa-solid fa-people-line"></i>
+                </div>
+                <div class="flex align-items-center ms-3">
+                  <i class="fa-solid fa-euro-sign"></i>
+                  <span><%= destination.price %></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="flat-card-actions">
-            <%= link_to "More info", destination_path(destination) %>
-            <%= link_to "Edit", edit_destination_path(destination), class: "ms-3 text-warning" %>
-            <%= link_to "Remove", destination_path(destination),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                class: "ms-3 text-danger"
-              %>
-          </div>
+            <div class="flat-card-actions">
+              <%= link_to "More info", destination_path(destination) %>
+              <%= link_to "Edit", edit_destination_path(destination), class: "ms-3 text-warning" %>
+              <%= link_to "Remove", destination_path(destination),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                  class: "ms-3 text-danger"
+                %>
+            </div>
         </div>
+            <div class="container mt-5 mb-5">
+            <%= form_with(model: @destination, url: destinations_path, local: true) do |form| %>
+
+              <h1>Add a Destination</h1>
+              <p>Become a host!</p>
+
+              <div>
+                <%= form.label :title %>
+                <%= form.text_field :title %>
+              </div>
+
+              <div>
+                <%= form.label :address %>
+                <%= form.text_field :address %>
+              </div>
+
+              <div>
+                <%= form.label :price %>
+                <%= form.number_field :price %>
+              </div>
+
+              <div>
+                <%= form.label :description %>
+                <%= form.text_area :description %>
+              </div>
+
+              <div>
+                <%= form.file_field :photos, as: :file,  multiple: true  %>
+              </div>
+
+              <div>
+                <%= form.submit 'Create Destination' %>
+              </div>
+            <% end %>
+            </div>
       </div>
     <% end %>
   </div>

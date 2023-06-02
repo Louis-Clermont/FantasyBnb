@@ -14,11 +14,9 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.user.first_name %></td>
+        <td><%= booking.destination.user.first_name %></td>
         <td><%= link_to booking.destination.title, booking_path(booking) %></td>
-        <td><%= booking.total_price %></td>
-        <td><%= booking.destination.title %></td>
-        <td><%= (booking.end_date - booking.start_date).to_i * booking.destination.price %></td>
+        <td>£<%= (booking.end_date - booking.start_date).to_i * booking.destination.price %></td>
         <td><%= booking.start_date %></td>
         <td><%= booking.end_date %></td>
       </tr>

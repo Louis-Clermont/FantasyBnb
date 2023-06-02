@@ -19,16 +19,16 @@
         <div class="rating">
           <% review.rating.times do %>
             <span class="star">&#9733;</span>
+            <h2><%= review.comment %></h2>
+            <p><%= review.booking.user.first_name %></p>
+            <p><%#= cl_image_tag review.booking.user.photo.key, class:"avatar" %></p>
           <% end %>
         </div>
-        <p><%= review.comment %></p>
-        <p><%= review.booking.user.first_name %></p>
-        <p><%= cl_image_tag review.booking.user.photo.key, class:"avatar" %></p>
       </div>
     <% end %>
   </div>
 
-  <%= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking), class: "btn btn-primary" %>
+  <%#= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking), class: "btn btn-primary" %>
 
   <%= link_to "Back", bookings_path %>
 </div>

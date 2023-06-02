@@ -10,7 +10,6 @@
 }
 
 
-
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
@@ -68,3 +67,11 @@
 // .navbar-toggler {
 
 // }
+
+
+.navbar-brand {
+
+  color: rgb(209, 62, 86);
+  font-size: medium;
+  text-decoration: none;
+}

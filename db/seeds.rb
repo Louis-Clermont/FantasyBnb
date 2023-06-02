@@ -136,7 +136,7 @@ los_angeles.photos.attach(io: file, filename: "nes.png", content_type: "image/pn
 file = URI.open("https://images.unsplash.com/photo-1583997052103-b4a1cb974ce5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG9nd2FydHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80")
 los_angeles.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-mordor =  Destination.create!(
+mordor = Destination.create!(
   user: saruman,
   title: "Modor",
   address: "Hogwarts Castle, Highlands, Scotland, Great Britain",
@@ -144,16 +144,16 @@ mordor =  Destination.create!(
   description: "It's a magical place!"
 )
 
-file = URI.open("https://cdn.vox-cdn.com/thumbor/HAstnw_9Iupryue6ovUGjx-DH-M=/0x0:3816x1575/1200x0/filters:focal(0x0:3816x1575):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/22280932/ROTK_eye_of_sauron.jpg")
-los_angeles.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+file = URI.open("https://e0.pxfuel.com/wallpapers/143/13/desktop-wallpaper-mordor-mordor-cinematic-sauron-eye.jpg")
+mordor.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 file = URI.open("https://images.unsplash.com/photo-1583997052103-b4a1cb974ce5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG9nd2FydHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80")
-los_angeles.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+mordor.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 file = URI.open("https://images.unsplash.com/photo-1583997052103-b4a1cb974ce5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG9nd2FydHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80")
-los_angeles.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+mordor.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 file = URI.open("https://images.unsplash.com/photo-1583997052103-b4a1cb974ce5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG9nd2FydHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80")
-los_angeles.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+mordor.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 file = URI.open("https://images.unsplash.com/photo-1583997052103-b4a1cb974ce5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG9nd2FydHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80")
-los_angeles.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+mordor.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 
 castle_black =  Destination.create!(
   user: jon,
