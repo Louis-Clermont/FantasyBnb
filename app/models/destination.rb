@@ -4,6 +4,7 @@ class Destination < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
 
+
   include PgSearch::Model
   pg_search_scope :search_by_title_and_address_and_description,
   against: [ :title, :address, :description ],
@@ -15,4 +16,8 @@ class Destination < ApplicationRecord
   validates :address, presence: true
   validates :price, presence: true
   validates :photos, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
 end

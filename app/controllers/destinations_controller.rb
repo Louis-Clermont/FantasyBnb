@@ -25,6 +25,11 @@ class DestinationsController < ApplicationController
   def show
     @booking = Booking.new
     @destination = Destination.find(params[:id])
+
+      @markers = [{
+          lat: @destination.latitude,
+          lng: @destination.longitude
+        }]
   end
 
   def edit
@@ -50,5 +55,4 @@ class DestinationsController < ApplicationController
   def destination_params
     params.require(:destination).permit(:title, :address, :price, :description, photos: [])
   end
-
 end
