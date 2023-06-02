@@ -16,19 +16,25 @@
   <div class="ratings">
     <% @reviews.each do |review| %>
       <div class="card">
-        <div class="rating">
-          <% review.rating.times do %>
-            <span class="star">&#9733;</span>
-            <h2><%= review.comment %></h2>
-            <p><%= review.booking.user.first_name %></p>
-            <p><%#= cl_image_tag review.booking.user.photo.key, class:"avatar" %></p>
-          <% end %>
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            <div class="rating mt-5 mb-5">
+              <% review.rating.times do %>
+                <span class="star">&#9733;</span>
+              <% end %>
+            </div>
+            <p><%= review.comment %></p>
+          </div>
+          <div class="ms-4 mt-5 mb-5">
+            <%= cl_image_tag review.booking.user.photo.key, class:"avatar" %>
+            <p class="text-center"><%= review.booking.user.first_name %></p>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
 
-  <%#= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking), class: "btn btn-primary" %>
+  <%= link_to "Add a review", new_destination_booking_review_path(@booking.destination, @booking), class: "btn btn-primary" %>
 
   <%= link_to "Back", bookings_path %>
 </div>

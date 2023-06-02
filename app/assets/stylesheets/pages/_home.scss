@@ -75,3 +75,10 @@
   font-size: medium;
   text-decoration: none;
 }
+
+
+.flat-card-actions {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 12px 0;
+}

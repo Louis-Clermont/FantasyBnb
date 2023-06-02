@@ -4,9 +4,10 @@
   </div>
 <br>
   <div class="row">
-    <div class ="d-flex justify-content-between">
+      <div class="col-lg-8">
+      <div class="row">
       <% current_user.destinations.each do |destination| %>
-        <div class="col-md-4">
+        <div class="col-lg-6">
           <div class="destination-card">
             <div class="destination-card-image">
               <% if !destination.photos.attached? %>
@@ -39,42 +40,45 @@
                 %>
             </div>
         </div>
-            <div class="container mt-5 mb-5">
-            <%= form_with(model: @destination, url: destinations_path, local: true) do |form| %>
-
-              <h1>Add a Destination</h1>
-              <p>Become a host!</p>
-
-              <div>
-                <%= form.label :title %>
-                <%= form.text_field :title %>
-              </div>
-
-              <div>
-                <%= form.label :address %>
-                <%= form.text_field :address %>
-              </div>
-
-              <div>
-                <%= form.label :price %>
-                <%= form.number_field :price %>
-              </div>
-
-              <div>
-                <%= form.label :description %>
-                <%= form.text_area :description %>
-              </div>
-
-              <div>
-                <%= form.file_field :photos, as: :file,  multiple: true  %>
-              </div>
-
-              <div>
-                <%= form.submit 'Create Destination' %>
-              </div>
-            <% end %>
-            </div>
       </div>
     <% end %>
-  </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="container">
+    <%= form_with(model: @destination, url: destinations_path, local: true) do |form| %>
+
+      <h1>Add a Destination</h1>
+      <p>Become a host!</p>
+
+      <div>
+        <%= form.label :title %>
+        <%= form.text_field :title, required: true %>
+      </div>
+
+      <div>
+        <%= form.label :address %>
+        <%= form.text_field :address, required: true %>
+      </div>
+
+      <div>
+        <%= form.label :price %>
+        <%= form.number_field :price, required: true %>
+      </div>
+
+      <div>
+        <%= form.label :description %>
+        <%= form.text_area :description, required: true %>
+      </div>
+
+      <div>
+        <%= form.file_field :photos, as: :file,  multiple: true  %>
+      </div>
+
+      <div>
+        <%= form.submit 'Create Destination' %>
+      </div>
+    <% end %>
+    </div>
+    </div>
 </div>
