@@ -133,7 +133,7 @@ hogwarts =  Destination.new(
   user: dumbledore,
   title: "Hogwarts",
   address: "Hogwarts Castle, Highlands, Scotland, Great Britain",
-  price: 1000000,
+  price: 934,
   description: "It's a magical place!"
 )
 
@@ -153,7 +153,7 @@ hogwarts.save!
   user: baggins,
   title: "The Shire",
   address: "Northwest of Middle-earth",
-  price: 1000000,
+  price: 340,
   description: "It's a magical place!"
 )
 
@@ -193,7 +193,7 @@ los_angeles =  Destination.new(
   user: joi,
   title: "Los Angeles (2049)",
   address: "LA",
-  price: 1000000,
+  price: 999,
   description: "It's the future! 2049!"
 )
 
@@ -213,7 +213,7 @@ mordor = Destination.new(
   user: saruman,
   title: "Modor",
   address: "Hogwarts Castle, Highlands, Scotland, Great Britain",
-  price: 1000000,
+  price: 667,
   description: "It's a magical place!"
 )
 
@@ -233,7 +233,7 @@ castle_black =  Destination.new(
   user: jon,
   title: "Castle Black",
   address: "The wall",
-  price: 1000000,
+  price: 89,
   description: "It's a magical place!"
 )
 
