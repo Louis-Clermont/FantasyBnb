@@ -1,0 +1,44 @@
+.images-container {
+  height: 200px;
+  position: relative;
+
+  .image-half {
+    height: 100%;
+    width: 50%;
+
+  }
+
+  .images-container-half {
+
+    height: 100%;
+    width: 50%;
+
+    .image-quarter {
+      height: 50%;
+      width: 25%;
+      position: absolute;
+
+      &:first-child {
+        left: 50%;
+        top: 0%
+
+      }
+
+      &:nth-child(2) {
+        top: 0%;
+        right: 0%;
+      }
+
+      &:nth-child(3) {
+        bottom: 0%;
+        right: 0%;
+      }
+
+      &:nth-child(4) {
+        bottom: 0%;
+        left: 50%;
+      }
+
+    }
+  }
+}
