@@ -1,7 +1,11 @@
 class DestinationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @destinations = Destination.order(id: :asc)
+    if params[:query].present?
+      @destinations = Destination.search_by_title_and_address_and_description(params[:query])
+    else
+      @destinations = Destination.order(id: :asc)
+    end
   end
 
   def new

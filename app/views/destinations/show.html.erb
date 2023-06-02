@@ -34,7 +34,7 @@
       </div>
      <div class="destination-show-card">
         <div class="profile_picture d-flex align-items-center">
-          <%# <%= cl_image_tag @destination.user.photo.key, class:"avatar" %>
+          <%= cl_image_tag @destination.user.photo.key, class:"avatar" %>
             <h5 class="host-name  ps-3"><%= @destination.user.first_name %></h5>
         </div>
       </div>
@@ -103,10 +103,10 @@
                   </div>
                 </div>
               </div>
-
             <% end %>
           </div>
         </div>
+
     </div>
   </div>
 </div>

@@ -43,6 +43,7 @@
   <h2>Reviews</h2>
   <div class="ratings review-cards">
     <% @reviews.each do |review| %>
+
     <div class="card-product mb-3">
       <%= cl_image_tag review.booking.user.photo.key, class:"avatar" %>
       <div class="card-product-infos">
@@ -50,6 +51,7 @@
           <% review.rating.times do %>
             <span class="star">&#9733;</span>
           <% end %>
+          
         </div>
         <h2><%= review.comment %></h2>
         <p><%= review.booking.user.first_name %></p>
